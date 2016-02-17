@@ -39,7 +39,7 @@ public class ImageCropping {
 			
 			BufferedImage CroppedImgage1 = convertedImage1.getSubimage(58, 58, 1400, 490);
 			BufferedImage CroppedImgage2 = convertedImage2.getSubimage(61, 61, 1270, 105);
-			BufferedImage CroppedImgage3 = convertedImage3.getSubimage(60, 65, 1290, 135);
+			BufferedImage CroppedImgage3 = convertedImage3.getSubimage(60, 65, 1285, 135);
 			BufferedImage CroppedImgage4 = convertedImage4.getSubimage(58, 60, 1360, 310);
 			
 

@@ -43,6 +43,8 @@ public class OnBoardingEmail {
 			   String from =properties.getProperty("FromEmail");
 			   final String username =properties.getProperty("Username");
 			   final String password =properties.getProperty("Password");
+			   String cc=properties.getProperty("CcEmail");
+			  
 			   
 	      // Assuming you are sending email through relay.jangosmtp.net
 	      Properties props = new Properties();
@@ -71,6 +73,11 @@ public class OnBoardingEmail {
 	          // Set To: header field of the header.
 	          message.setRecipients(Message.RecipientType.TO,
 	             InternetAddress.parse(to));
+	          
+	          //Set CC
+	          
+	          message.setRecipients(Message.RecipientType.CC,
+	                  InternetAddress.parse(cc));
 
 	          // Set Subject: header field
 	          message.setSubject("Daily On-Boarding Master Tracker as on "+ Date);
@@ -80,7 +87,7 @@ public class OnBoardingEmail {
 
 	    	    // first part  (the html)
 	    	    BodyPart messageBodyPart = new MimeBodyPart();
-	    	    String htmlText = "<p> Dear All, <br>Please find the Daily On-Boarding Master Tracker enclosed.</p>"
+	    	    String htmlText = "<p> Dear All, <br>Please find the Daily On-Boarding Master data below.</p>"
 	    	    +"<h3>Zone/Area Wise Overall Status:-</h3>";
 	    	    htmlText+="<p align=left><img src=\"cid:image1\"> </p>";
 	    	    htmlText+="<h3>Partner Wise Status:-</h3>";

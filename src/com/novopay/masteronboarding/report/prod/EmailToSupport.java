@@ -43,6 +43,7 @@ catch (Exception e )
 		   String from =properties.getProperty("FromEmail");
 		   final String username =properties.getProperty("Username");
 		   final String password =properties.getProperty("Password");
+		   String ccSupport=properties.getProperty("CcSupportEmail");
 	   
       // Assuming you are sending email through relay.jangosmtp.net
       Properties props = new Properties();
@@ -70,6 +71,10 @@ catch (Exception e )
           // Set To: header field of the header.
           message.setRecipients(Message.RecipientType.TO,
              InternetAddress.parse(ToSupportEmail));
+          
+          //Set CC
+          message.setRecipients(Message.RecipientType.CC,
+                  InternetAddress.parse(ccSupport));
 
           // Set Subject: header field
           message.setSubject("Daily On-Boarding Master Tracker Sheet "+Date);
@@ -97,8 +102,6 @@ catch (Exception e )
          // Send message
          Transport.send(message);
 
-         System.out.println("Sent message successfully....");
-
       } catch (MessagingException me) 
       {
       logger.error("Messaging Exception",me);
@@ -108,7 +111,7 @@ catch (Exception e )
       {
       logger.error("Exception",e);
       }
-      logger.debug("Email Sent Successfully");
+      logger.debug("Email Sent to Support Team Successfully");
    }
 }
 
