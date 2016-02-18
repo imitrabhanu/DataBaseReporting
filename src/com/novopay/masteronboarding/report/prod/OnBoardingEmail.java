@@ -18,9 +18,23 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 import org.apache.log4j.Logger;
+/**
+* The class sends an email  to specified users along with the image in the body of the email.
+* 
+* @author  Mitrabhanu
+* @version 1.0
+* @since   2016-02-17 
+*/
+
 public class OnBoardingEmail {
 	
 	private static Logger logger=Logger.getLogger("OnBoardingEmail.class");
+	
+	/**
+     * This is a method to send an email  to specified users along with the image in the body of the email.
+     * 
+     * @return Nothing
+     */	
 	public void sendEmail(String Date)
 	{
 		 Properties properties=new Properties();
@@ -44,10 +58,7 @@ public class OnBoardingEmail {
 			   final String username =properties.getProperty("Username");
 			   final String password =properties.getProperty("Password");
 			   String cc=properties.getProperty("CcEmail");
-			  
-			   
-	      // Assuming you are sending email through relay.jangosmtp.net
-	      Properties props = new Properties();
+	        Properties props = new Properties();
 			props.put("mail.smtp.host", "smtp.gmail.com");
 			props.put("mail.smtp.socketFactory.port", "465");
 			props.put("mail.smtp.socketFactory.class",
@@ -126,7 +137,7 @@ public class OnBoardingEmail {
 	    	    messageBodyPart.addHeader("Content-ID","<image3>");
 	    	    // add it
 	    	    multipart.addBodyPart(messageBodyPart);
-	            //24th image
+	            //4th image
 	    	    messageBodyPart = new MimeBodyPart();
 	    	    DataSource fds4 = new FileDataSource
 	    	    ("./Image/Axis Partner, Awaiting for Devi.jpeg");
@@ -134,15 +145,7 @@ public class OnBoardingEmail {
 	    	    messageBodyPart.addHeader("Content-ID","<image4>");
 	    	    // add it
 	    	    multipart.addBodyPart(messageBodyPart); 
-	    	    
-	    	 /*// Add Attachment
-	            messageBodyPart = new MimeBodyPart();
-	            String filename = "./Report/Report_"+reportGenerationDate+".xlsx";
-	            DataSource source = new FileDataSource(filename);
-	            messageBodyPart.setDataHandler(new DataHandler(source));
-	            messageBodyPart.setFileName(filename);
-	            multipart.addBodyPart(messageBodyPart);*/
-	    	 	    
+  
 	          // put everything together
 	    	    message.setContent(multipart);
 

@@ -16,6 +16,17 @@ import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+/**
+* The class implements various method to generate excel report from database 
+* and stores the report in a specified location.
+* It uses Apache POI Api for storing the data in excel sheet.
+* 
+* 
+* @author  Mitrabhanu
+* @version 1.0
+* @since   2016-02-17 
+*/
+
 
 public class ReportGeneratorImplementation {
 	private static Logger logger=Logger.getLogger("ReportGeneratorImplementation.class");
@@ -27,9 +38,11 @@ public class ReportGeneratorImplementation {
 		 XSSFSheet sheet3 =(XSSFSheet) wb.createSheet("Partner Wise Data");
 		 XSSFSheet sheet4 =(XSSFSheet) wb.createSheet("Pendency in Sales Bin");
 		 XSSFSheet sheet5 =(XSSFSheet) wb.createSheet("Axis Partner, Awaiting for Device Numbers");
-		 
-		 //Creating header for each sheet, assigning cell style and cell values
-		 
+		 /**
+	        * This is a method to create header for each sheet, assigning cell style and cell values.
+	        * 
+	        * @return Nothing
+	        */
 		 public void workBook()
 		 {   
 			 XSSFRow header1 =(XSSFRow) sheet1.createRow(0);
@@ -379,6 +392,12 @@ public class ReportGeneratorImplementation {
 		 			
 			
 		//Method to Create CellStyle for Header
+		 
+		 /**
+	        * This is a method to to create CellStyle for Header.
+	        * 
+	        * @return CellStyle this returns the cell style for header.
+	        */
 		    private CellStyle csHeader()
 		    {
 		    	
@@ -395,9 +414,12 @@ public class ReportGeneratorImplementation {
 				 cs.setBorderTop(XSSFCellStyle.BORDER_MEDIUM);
 				 cs.setBorderBottom(XSSFCellStyle.BORDER_MEDIUM);
 				 return cs;
-		    }
-		    
-	  //Method to Create CellStyle for Summary Page
+                 }
+		        /**
+		        * This is a method to to create CellStyle for Header with long pending data.
+		        * 
+		        * @return CellStyle this returns the cell style for header with long pending data.
+		        */
 		    private CellStyle csHeaderLongPending()
 		    {
 		    	 CellStyle cs1 =wb.createCellStyle();
@@ -415,6 +437,12 @@ public class ReportGeneratorImplementation {
 				 return cs1;		   	
 		    }
 		    //Method to Add Borders to Cells
+		    /**
+		        * This is a method to to add Borders to Cells.
+		        * 
+		        * @return CellStyle this returns the cell style to add Borders to Cells.
+		        */
+		    
 		    private CellStyle csBorder()
 		    {
 		    	 CellStyle cs2 =wb.createCellStyle();
@@ -425,13 +453,17 @@ public class ReportGeneratorImplementation {
 				 return cs2;		   	
 		    }
 		    
-		//Method to Export File
+		  
+		        /**
+		        * This is a method to store the data in excel in a specified location.
+		        * 
+		        * @return Nothing
+		        */
 		    private void FileWrite(String reportGenerationDate)
 		    {
 		    	try{
 	      FileOutputStream fileOut = new FileOutputStream("./Report/Report_"+reportGenerationDate+".xlsx");
 	      wb.write(fileOut);
-	      
 	      fileOut.close();
 		    	}
 		    	catch (IOException ie) 
@@ -445,9 +477,13 @@ public class ReportGeneratorImplementation {
 			    }
 		    }
 		    
+		      /**
+		        * This is a method to read data from database and write it to excel.
+		        * 
+		        * @return Nothing
+		        */
 		
-		
-		//Method to Generate Report For Today
+		    
 			void ReportGenerator(String reportDate )
 			{
 				    PreparedStatement stmt1,stmt2,stmt3,stmt4,stmt5=null; 

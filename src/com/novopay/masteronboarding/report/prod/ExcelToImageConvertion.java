@@ -10,16 +10,30 @@ import com.aspose.cells.ImageOrPrintOptions;
 import com.aspose.cells.SheetRender;
 import com.aspose.cells.Workbook;
 import com.aspose.cells.Worksheet;
-
+/**
+* The class converts all the sheets in an excel file to images.
+* and stores the images in a specified location.
+* 
+* 
+* @author  Mitrabhanu
+* @version 1.0
+* @since   2016-02-17 
+*/
 
 public class ExcelToImageConvertion 
 {
 	private static Logger logger=Logger.getLogger(ExcelToImageConvertion.class);
-	void ImageConversion(String reportGenerationDate)
-{
+	/**
+     * This is a method to convert excel sheets to image.This user Aspose Cells API for the conversion.
+     * 
+     * @return Nothing
+     */
 	
+	void ImageConversion(String reportGenerationDate)
+	{
 	try
-    {
+    {   
+		//Sets the path for font which is calibri by default.
 		CellsHelper.setFontDir("/usr/share/fonts/truetype/msttcorefonts/");
 		//Instantiate a new Workbook object
 		//Open template

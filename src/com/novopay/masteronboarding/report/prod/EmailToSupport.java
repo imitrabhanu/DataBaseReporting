@@ -18,9 +18,21 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 import org.apache.log4j.Logger;
-
+/**
+* The class sends an email to specified users with an attachment.
+* 
+* @author  Mitrabhanu
+* @version 1.0
+* @since   2016-02-17 
+*/
 public class EmailToSupport {
 	private static Logger logger=Logger.getLogger("OnBoardingEmail.class");
+	
+	/**
+     * This is a method to send an email  to specified users along with the image in the body of the email.
+     * 
+     * @return Nothing
+     */	
 	public void sendEmailToSupport(String Date,String reportGenerationDate){
 
 	   Properties properties=new Properties();

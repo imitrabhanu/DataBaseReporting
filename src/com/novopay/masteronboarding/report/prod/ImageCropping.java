@@ -8,10 +8,24 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import org.apache.log4j.Logger;
-
+/**
+* This class crops the image to a specified size.
+* 
+* @author  Mitrabhanu
+* @version 1.0
+* @since   2016-02-17 
+*/
 
 public class ImageCropping {
 	private static Logger logger=Logger.getLogger(ImageCropping.class);
+	
+	 /**
+     * This is a method to convert CMYK image to RGB image.
+     * 
+     * 
+     * @return BufferedImage This returns image in RBG format.
+     * 
+     */	
 	
 	private BufferedImage convertCMYK2RGB(BufferedImage image) throws IOException{
 	   
@@ -23,6 +37,13 @@ public class ImageCropping {
 	    op.filter(image, rgbImage);
 	    return rgbImage;
 	}
+	
+	 /**
+     * This is a method to crop images to a specified size.
+     * 
+     * 
+     * @return Nothing
+     */	
 	void conversionImplementation()
 	{
 		try {
