@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ColorConvertOp;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -44,7 +45,7 @@ public class ImageCropping {
      * 
      * @return Nothing
      */	
-	void conversionImplementation()
+	void conversionImplementation(ArrayList<Integer> sheetRowCountList)
 	{
 		try {
 			BufferedImage imgage1 = ImageIO.read(new File("./Image/Zone & Area Wise Data.jpeg"));
@@ -58,10 +59,10 @@ public class ImageCropping {
 			BufferedImage convertedImage3=image.convertCMYK2RGB(imgage3);
 			BufferedImage convertedImage4=image.convertCMYK2RGB(imgage4);
 			
-			BufferedImage CroppedImgage1 = convertedImage1.getSubimage(58, 58, 1400, 490);
-			BufferedImage CroppedImgage2 = convertedImage2.getSubimage(61, 61, 1270, 105);
-			BufferedImage CroppedImgage3 = convertedImage3.getSubimage(60, 65, 1285, 135);
-			BufferedImage CroppedImgage4 = convertedImage4.getSubimage(58, 60, 1360, 310);
+			BufferedImage CroppedImgage1 = convertedImage1.getSubimage(58, 58, 1400, (sheetRowCountList.get(0)+2)*20);
+			BufferedImage CroppedImgage2 = convertedImage2.getSubimage(61, 61, 1270, (sheetRowCountList.get(1)+2)*20);
+			BufferedImage CroppedImgage3 = convertedImage3.getSubimage(60, 65, 1285, (sheetRowCountList.get(2)+2)*20);
+			BufferedImage CroppedImgage4 = convertedImage4.getSubimage(58, 60, 1360, (sheetRowCountList.get(3)+2)*20);
 			
 
 			File outputfile1 = new File("./Image/Zone & Area Wise Data.jpeg");

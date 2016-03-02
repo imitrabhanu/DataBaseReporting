@@ -1,6 +1,7 @@
 package com.novopay.masteronboarding.report.prod;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.apache.log4j.Logger;
@@ -52,12 +53,12 @@ private static Logger logger=Logger.getLogger(MainReportGeneration.class);
 		ReportGeneratorImplementation reportGeneratorImplementation=new ReportGeneratorImplementation();
 		reportGeneratorImplementation.workBook();
 		
-		reportGeneratorImplementation.ReportGenerator(MainObject.reportDateToday());
+		ArrayList<Integer> sheetRowCountList =reportGeneratorImplementation.ReportGenerator(MainObject.reportDateToday());
 		ExcelToImageConvertion conversion=new ExcelToImageConvertion();
 		conversion.ImageConversion(MainObject.reportDateToday());
 		
 		ImageCropping cropping=new ImageCropping();
-		cropping.conversionImplementation();
+		cropping.conversionImplementation(sheetRowCountList);
 		OnBoardingEmail email=new OnBoardingEmail();
 		
 		email.sendEmail(MainObject.todayDate());
